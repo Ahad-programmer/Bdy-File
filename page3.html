@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Final Surprise</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #fff1f8, #ffdbe6);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .cake {
+      position: relative;
+      width: 200px;
+      height: 180px;
+      background: #ff8fab;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .cake::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 80px;
+      width: 40px;
+      height: 40px;
+      background: #fff176;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .flame {
+      position: absolute;
+      top: -50px;
+      left: 98px;
+      width: 5px;
+      height: 20px;
+      background: orange;
+      border-radius: 50%;
+      animation: flicker 0.3s infinite;
+      transform-origin: bottom;
+    }
+
+    @keyframes flicker {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); background: yellow; }
+      100% { transform: rotate(-5deg); }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #e91e63;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    .photo {
+      margin-top: 40px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      max-width: 90%;
+      width: 250px;
+      height: auto;
+    }
+
+    .photo.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .text-section {
+      margin-top: 30px;
+      max-width: 90%;
+      color: #880e4f;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0;
+      transition: opacity 1s ease;
+      text-align: center;
+    }
+
+    .text-section.visible {
+      opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+      .photo {
+        width: 300px;
+      }
+
+      .text-section {
+        font-size: 1.2rem;
+        max-width: 600px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .photo {
+        width: 350px;
+      }
+
+      .text-section {
+        font-size: 1.3rem;
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="cake">
+      <div class="flame" id="flame"></div>
+    </div>
+
+    <button onclick="blowCandle()">Blow the Candles 🎂</button>
+
+    <img src="umama.jpg" alt="Umama's Picture" class="photo" id="photo" />
+
+    <div class="text-section" id="text">
+      <p>Lorem ipsum dolor sit amet, Umama. You have always been someone who lights up my days just by being you. You’re genuinely sweet, innocent and full of love.</p>
+      <p>Lorem ipsum dolor sit amet, Your laughter is music to my ears, your smile is sunshine to my world, and your presence is a blessing I thank for every day.</p>
+      <p>Lorem ipsum dolor sit amet, On your special day, I just want you to know that you are appreciated more than words can express. May this birthday bring you pure happiness!</p>
+    </div>
+  </div>
+
+  <script>
+    function blowCandle() {
+      document.getElementById("flame").style.display = "none";
+      document.getElementById("photo").classList.add("visible");
+      document.getElementById("text").classList.add("visible");
+    }
+  </script>
+
+</body>
+</html>

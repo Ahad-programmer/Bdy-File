@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Umama</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ffe0ec, #ffc6d9);
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background: #ff6fa1;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #888;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) }
+      50% { transform: translateY(-30px) }
+      100% { transform: translateY(0) }
+    }
+
+    .message {
+      color: #e91e63;
+      font-size: 1.6rem;
+      max-width: 90%;
+      margin-top: 20px;
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      background-color: #ff4081;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #f50057;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 50%; background: #fbc02d; animation-delay: 1s;"></div>
+  <div class="balloon" style="left: 80%; background: #00bcd4; animation-delay: 2s;"></div>
+
+  <!-- Typing message -->
+  <div class="message" id="typeMessage"></div>
+
+  <button onclick="nextPage()">See More</button>
+
+  <script>
+    const message = "Happy Birthday Umama! 🎉\nYou’ve been a light in my life for the past 3 years.\nYou’re the definition of cute, kind, and special.\nThis day is all yours, and I hope it’s as beautiful as you are 💖";
+    let i = 0;
+    function typeWriter() {
+      if (i < message.length) {
+        document.getElementById("typeMessage").innerHTML += message.charAt(i) === '\n' ? '<br>' : message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    function nextPage() {
+      window.location.href = "page3.html";
+    }
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>
